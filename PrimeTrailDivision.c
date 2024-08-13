@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #define MAX_NUM 1000000
 
-int *primes = (int*)malloc(sizeof(int)), primeCount = 1;
+int *primes = (int*)malloc(sizeof(int)), primeCount;
 
 bool isPrime(int n) {
     int limit = sqrt(n);
@@ -17,6 +17,7 @@ bool isPrime(int n) {
 
 void init() {
     primes[0] = 2;
+    primeCount = 1;
     for(int n = 3; n < MAX_NUM; n += 2) {
         if(isPrime(n)) {
             primes = (int*)realloc(primes, (primeCount + 1) * sizeof(int));
