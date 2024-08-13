@@ -6,9 +6,9 @@
 typedef struct {
     char *number;
     short digits;
-} Fib;
+} BigNumber;
 
-Fib fib[MAX_FIB_SIZE + 1];
+BigNumber fib[MAX_FIB_SIZE + 1];
 
 void initFibonacci() {
     fib[0].number = strdup("0");
