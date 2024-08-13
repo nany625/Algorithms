@@ -18,7 +18,7 @@ bool isPrime(int n) {
 void init() {
     primes[0] = 2;
     primeCount = 1;
-    for(int n = 3; n < MAX_NUM; n += 2) {
+    for(int n = 3; n <= MAX_NUM; n += 2) {
         if(isPrime(n)) {
             primes = (int*)realloc(primes, (primeCount + 1) * sizeof(int));
             primes[primeCount++] = n;
