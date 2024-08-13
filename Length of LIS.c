@@ -41,5 +41,6 @@ int main() {
         firstNum = false;
     }
     printf("] is %d.\n", lengthOfLIS(array, arraySize));
+    free(array);
     return 0;
 }
