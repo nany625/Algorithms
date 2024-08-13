@@ -5,7 +5,7 @@
 #define MAX_NUM 1000000
 
 bool isComposite[MAX_NUM + 1] = {true, true, false};
-int *primes = (int*)malloc(sizeof(int)), primeCount;
+int *primes = NULL, primeCount;
 
 void sieve() {
     primeCount = 0;
