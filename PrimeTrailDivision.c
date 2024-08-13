@@ -15,7 +15,7 @@ bool isPrime(int n) {
     return true;
 }
 
-void init() {
+void primeTrailDivision() {
     primes[0] = 2;
     primeCount = 1;
     for(int n = 3; n <= MAX_NUM; n += 2) {
@@ -27,7 +27,7 @@ void init() {
 }
 
 int main() {
-    init();
+    primeTrailDivision();
     int n;
     while(scanf("%d", &n) && n != 0)
         printf("%d is %sprime.\n", n, isPrime(n) ? "" : "not ");
