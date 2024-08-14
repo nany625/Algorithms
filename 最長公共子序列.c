@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 int lengthOfLCS(char *X, char *Y) {
     int m = strlen(X), n = strlen(Y);
