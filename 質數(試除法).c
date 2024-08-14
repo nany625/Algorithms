@@ -30,7 +30,7 @@ int main() {
     primeTrailDivision();
     int n;
     while(scanf("%d", &n) && n != 0)
-        printf("%d is %sprime.\n", n, isPrime(n) ? "" : "not ");
+        printf("%d is %sprime\n", n, isPrime(n) ? "" : "not ");
     free(primes);
     return 0;
 }
