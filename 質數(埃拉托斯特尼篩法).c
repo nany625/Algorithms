@@ -26,7 +26,7 @@ int main() {
     sieve();
     int n;
     while(scanf("%d", &n) && n != 0)
-        printf("%d is %sprime.\n", n, !isComposite[n] ? "" : "not ");
+        printf("%d is %sprime\n", n, !isComposite[n] ? "" : "not ");
     free(primes);
     return 0;
 }
