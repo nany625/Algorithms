@@ -25,7 +25,7 @@ int main() {
         printf("%d", array[i]);
         firstNum = false;
     }
-    printf("] is %d\n", maxSubArraySum(array, arraySize));
+    printf("]: %d\n", maxSubArraySum(array, arraySize));
     free(array);
     return 0;
 }
