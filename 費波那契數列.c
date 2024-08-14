@@ -33,7 +33,7 @@ int main() {
         printf("The Fibonacci number for %d is ", n);
         for(int i = fib[n].digits - 1; i >= 0; --i)
             putchar(fib[n].number[i]);
-        puts(".");
+        putchar('\n');
     }
     for(int i = 0; i <= MAX_FIBONACCI_SIZE; ++i)
         free(fib[i].number);
