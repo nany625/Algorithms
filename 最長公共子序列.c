@@ -5,18 +5,21 @@
 
 int lengthOfLCS(char *X, char *Y) {
     int m = strlen(X), n = strlen(Y);
-    int LCS[m + 1][n + 1];
-    for(int i = 0; i <= m; ++i) {
-        for(int j = 0; j <= n; ++j) {
-            if(i == 0 || j == 0)
-                LCS[i][j] = 0;
-            else if(X[i - 1] == Y[j - 1])
-                LCS[i][j] = LCS[i - 1][j - 1] + 1;
+    int LCS[n + 1];
+    for(int i = 0; i <= n; ++i)
+        LCS[i] = 0;
+    for(int i = 0; i < m; ++i) {
+        int prev = 0;
+        for(int j = 1; j <= n; ++j) {
+            int temp = LCS[j];
+            if(X[i] == Y[j - 1])
+                LCS[j] = prev + 1;
             else
-                LCS[i][j] = LCS[i - 1][j] > LCS[i][j - 1] ? LCS[i - 1][j] : LCS[i][j - 1];
+                LCS[j] = LCS[j] > LCS[j - 1] ? LCS[j] : LCS[j - 1];
+            prev = temp;
         }
     }
-    return LCS[m][n];
+    return LCS[n];
 }
 
 int main() {
