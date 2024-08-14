@@ -45,7 +45,7 @@ int main() {
     sieve();
     long n;
     while(scanf("%ld", &n) && n != 0)
-        printf("Sum of divisors of %ld is %ld.\n", n, trueFactorSum(n));
+        printf("Sum of divisors of %ld: %ld\n", n, trueFactorSum(n));
     free(primes);
     return 0;
 }
