@@ -30,7 +30,7 @@ int main() {
         printf("%d", array[i]);
         firstNum = false;
     }
-    puts("].");
+    puts("]");
     free(array);
     return 0;
 }
