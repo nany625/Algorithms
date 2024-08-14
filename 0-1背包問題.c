@@ -15,22 +15,14 @@ int main() {
 	}
 	int capacity;
 	scanf("%d", &capacity);
-	int dp[size + 1][capacity + 1];
+	int dp[capacity + 1];
 	for(int i = 0; i <= capacity; ++i)
-	    dp[0][i] = 0;
-	for(int i = 1; i <= size; ++i) {
-	    w = items[i - 1].weight;
-	    v = items[i - 1].value;
-	    for(int j = 0; j <= capacity; ++j) {
-	        if(j == 0)
-	            dp[i][j] = 0;
-	        else if(j >= w)
-	            dp[i][j] = dp[i - 1][j] > dp[i - 1][j - w] + v ? dp[i - 1][j] : dp[i - 1][j - w] + v;
-	        else
-	            dp[i][j] = dp[i - 1][j];
-	    }
+	    dp[i] = 0;
+	for(int i = 0; i < size; ++i) {
+	    for(int j = capacity; j >= items[i].weight; --j)
+	        dp[j] = dp[j] > dp[j - items[i].weight] + items[i].value ? dp[j] : dp[j - items[i].weight] + items[i].value;
 	}
-	printf("Maximum value in Knapsack: %d\n", dp[size][capacity]);
+	printf("Maximum value in Knapsack: %d\n", dp[capacity]);
 	free(items);
 	return 0;
 }
