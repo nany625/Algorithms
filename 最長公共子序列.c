@@ -22,7 +22,7 @@ int lengthOfLCS(char *X, char *Y) {
 int main() {
     char *X = NULL, *Y = NULL;
     while(scanf("%ms %ms", &X, &Y) == 2) {
-        printf("Length of LCS of string \"%s\" and \"%s\" is %d.\n", X, Y, lengthOfLCS(X, Y));
+        printf("Length of LCS of string \"%s\" and \"%s\" is %d\n", X, Y, lengthOfLCS(X, Y));
         free(X);
         free(Y);
         X = Y = NULL;
