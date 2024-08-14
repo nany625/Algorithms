@@ -19,8 +19,10 @@ int main() {
 	for(int i = 0; i <= capacity; ++i)
 	    dp[i] = 0;
 	for(int i = 0; i < size; ++i) {
-	    for(int j = capacity; j >= items[i].weight; --j)
-	        dp[j] = dp[j] > dp[j - items[i].weight] + items[i].value ? dp[j] : dp[j - items[i].weight] + items[i].value;
+	    w = items[i].weight;
+	    v = items[i].value;
+	    for(int j = capacity; j >= w; --j)
+	        dp[j] = dp[j] > dp[j - w] + v ? dp[j] : dp[j - w] + v;
 	}
 	printf("Maximum value in Knapsack: %d\n", dp[capacity]);
 	free(items);
