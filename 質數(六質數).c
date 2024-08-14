@@ -18,6 +18,6 @@ bool sexyPrime(int n) {
 int main() {
     int n;
     while(scanf("%d", &n) && n != 0)
-        printf("%d is %sprime.\n", n, sexyPrime(n) ? "" : "not ");
+        printf("%d is %sprime\n", n, sexyPrime(n) ? "" : "not ");
     return 0;
 }
