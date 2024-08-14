@@ -7,6 +7,6 @@ long GCD(long a, long b) {
 int main() {
     long a, b;
     while(scanf("%ld %ld", &a, &b) && a != 0 && b != 0)
-        printf("GCD of %ld and %ld is %ld.\n", a, b, GCD(a, b));
+        printf("GCD of %ld and %ld is %ld\n", a, b, GCD(a, b));
     return 0;
 }
