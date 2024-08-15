@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct {
     int weight, value;
@@ -16,8 +17,7 @@ int main() {
 	int capacity;
 	scanf("%d", &capacity);
 	int dp[capacity + 1];
-	for(int i = 0; i <= capacity; ++i)
-	    dp[i] = 0;
+	memset(dp, 0, sizeof(dp));
 	for(int i = 0; i < size; ++i) {
 	    w = items[i].weight;
 	    v = items[i].value;
