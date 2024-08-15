@@ -4,8 +4,7 @@
 #define NO_OF_CHARS 256
 
 void badCharHeuristic(char *pattern, int len, int *badchar) {
-    for(int i = 0; i < NO_OF_CHARS; ++i)
-        badchar[i] = -1;
+    memset(badchar, -1, sizeof(badchar));
     for(int i = 0; i < len; ++i)
         badchar[(int)pattern[i]] = i;
 }
