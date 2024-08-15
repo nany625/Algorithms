@@ -6,7 +6,7 @@
 bool isSubsetSum(int *array, int arraySize, int sum) {
     bool subsetSum[sum + 1];
     subsetSum[0] = true;
-    memset(subsetSum, false, sum * sizeof(bool));
+    memset(subsetSum + 1, false, sum * sizeof(bool));
     for(int i = 0; i < arraySize && !subsetSum[sum]; ++i) {
         for(int j = sum; j >= array[i] && !subsetSum[sum]; --j)
             subsetSum[j] = subsetSum[j] || subsetSum[j - array[i]];
