@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
 bool isSubsetSum(int *array, int arraySize, int sum) {
     bool subsetSum[sum + 1];
     subsetSum[0] = true;
-    for(int i = 1; i <= sum; ++i)
-        subsetSum[i] = false;
+    memset(subsetSum, false, sum * sizeof(bool));
     for(int i = 0; i < arraySize && !subsetSum[sum]; ++i) {
         for(int j = sum; j >= array[i] && !subsetSum[sum]; --j)
             subsetSum[j] = subsetSum[j] || subsetSum[j - array[i]];
