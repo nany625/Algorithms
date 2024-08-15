@@ -5,8 +5,7 @@
 int lengthOfLCS(char *X, char *Y) {
     int m = strlen(X), n = strlen(Y);
     int LCS[n + 1];
-    for(int i = 0; i <= n; ++i)
-        LCS[i] = 0;
+    memset(LCS, 0, sizeof(LCS));
     for(int i = 0; i < m; ++i) {
         int prev = 0;
         for(int j = 1; j <= n; ++j) {
