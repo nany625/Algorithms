@@ -57,9 +57,9 @@ void freeTree(TreeNode *root) {
 
 int main() {
     TreeNode *root = NULL;
-    int num;
-    while(scanf("%d", &num) == 1)
-        root = insertNode(root, num);
+    int n;
+    while(scanf("%d", &n) == 1)
+        root = insertNode(root, n);
     fputs("Inorder Traversal: ", stdout);
     inorderTraversal(root);
     fputs("\nPreorder Traversal: ", stdout);
