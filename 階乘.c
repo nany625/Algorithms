@@ -90,7 +90,7 @@ int main() {
     initFactorial();
     int n;
     while(scanf("%d", &n) == 1)
-        printf("%d!\n%s\n", n, fac[n].number);
+        printf("%d! = %s\n", n, fac[n].number);
     for(int i = 0; i <= MAX_FACTORIAL_SIZE; ++i)
         free(fac[i].number);
     return 0;
