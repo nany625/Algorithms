@@ -23,24 +23,23 @@ void initFactorial() {
         memset(fac[i].number, '0', (fac[i - 1].digits + len) * sizeof(char));
         fac[i].number[fac[i - 1].digits + len] = '\0';
         for(int j = len - 1; j >= 0; --j) {
-            for(int k = 0; k < fac[i - 1].digits; ++k) {
-                fac[i].number[len - j + k] += ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[len - 1 - j + k] - '0') / 10;
-                fac[i].number[len - 1 - j + k] = ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[len - 1 - j + k] - '0') % 10 + '0';
+            for(int k = fac[i - 1].digits - 1; k >= 0; --k) {
+                fac[i].number[j + k] += ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[j + k + 1] - '0') / 10;
+                fac[i].number[j + k + 1] = ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[j + k + 1] - '0') % 10 + '0';
             }
         }
-        fac[i].digits = fac[i - 1].digits + len - (fac[i].number[fac[i - 1].digits + len - 1] == '0');
+        fac[i].digits = fac[i - 1].digits + len - (fac[i].number[0] == '0');
+        if(fac[i].number[0] == '0')
+            memmove(fac[i].number, fac[i].number + 1, fac[i].digits * sizeof(char));
+        fac[i].number[fac[i].digits] = '\0';
     }
 }
 
 int main() {
     initFactorial();
     int n;
-    while(scanf("%d", &n) == 1) {
-        printf("%d! = ", n);
-        for(int i = fac[n].digits - 1; i >= 0; --i)
-            putchar(fac[n].number[i]);
-        putchar('\n');
-    }
+    while(scanf("%d", &n) == 1)
+        printf("%d! = %s\n", n, fac[n].number);
     for(int i = 0; i <= MAX_FACTORIAL_SIZE; ++i)
         free(fac[i].number);
     return 0;
@@ -71,23 +70,24 @@ void initFactorial() {
         memset(fac[i].number, '0', (fac[i - 1].digits + len) * sizeof(char));
         fac[i].number[fac[i - 1].digits + len] = '\0';
         for(int j = len - 1; j >= 0; --j) {
-            for(int k = fac[i - 1].digits - 1; k >= 0; --k) {
-                fac[i].number[j + k] += ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[j + k + 1] - '0') / 10;
-                fac[i].number[j + k + 1] = ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[j + k + 1] - '0') % 10 + '0';
+            for(int k = 0; k < fac[i - 1].digits; ++k) {
+                fac[i].number[len - j + k] += ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[len - 1 - j + k] - '0') / 10;
+                fac[i].number[len - 1 - j + k] = ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[len - 1 - j + k] - '0') % 10 + '0';
             }
         }
-        fac[i].digits = fac[i - 1].digits + len - (fac[i].number[0] == '0');
-        if(fac[i].number[0] == '0')
-            memmove(fac[i].number, fac[i].number + 1, fac[i].digits * sizeof(char));
-        fac[i].number[fac[i].digits] = '\0';
+        fac[i].digits = fac[i - 1].digits + len - (fac[i].number[fac[i - 1].digits + len - 1] == '0');
     }
 }
 
 int main() {
     initFactorial();
     int n;
-    while(scanf("%d", &n) == 1)
-        printf("%d! = %s\n", n, fac[n].number);
+    while(scanf("%d", &n) == 1) {
+        printf("%d! = ", n);
+        for(int i = fac[n].digits - 1; i >= 0; --i)
+            putchar(fac[n].number[i]);
+        putchar('\n');
+    }
     for(int i = 0; i <= MAX_FACTORIAL_SIZE; ++i)
         free(fac[i].number);
     return 0;
