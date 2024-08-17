@@ -21,7 +21,6 @@ void initFactorial() {
         int len = strlen(temp);
         fac[i].number = (char*)malloc((fac[i - 1].digits + len + 1) * sizeof(char));
         memset(fac[i].number, '0', (fac[i - 1].digits + len) * sizeof(char));
-        fac[i].number[fac[i - 1].digits + len] = '\0';
         for(int j = len - 1; j >= 0; --j) {
             for(int k = fac[i - 1].digits - 1; k >= 0; --k) {
                 fac[i].number[j + k] += ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[j + k + 1] - '0') / 10;
@@ -68,7 +67,6 @@ void initFactorial() {
         int len = strlen(temp);
         fac[i].number = (char*)malloc((fac[i - 1].digits + len + 1) * sizeof(char));
         memset(fac[i].number, '0', (fac[i - 1].digits + len) * sizeof(char));
-        fac[i].number[fac[i - 1].digits + len] = '\0';
         for(int j = len - 1; j >= 0; --j) {
             for(int k = 0; k < fac[i - 1].digits; ++k) {
                 fac[i].number[len - j + k] += ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[len - 1 - j + k] - '0') / 10;
