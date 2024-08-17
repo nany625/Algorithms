@@ -13,7 +13,7 @@ BigNumber fac[MAX_FACTORIAL_SIZE + 1];
 char temp[5];
 
 void initFactorial() {
-	fac[0].number = strdup("0");
+	fac[0].number = strdup("1");
 	fac[1].number = strdup("1");
     fac[0].digits = fac[1].digits = 1;
     for(int i = 2; i <= MAX_FACTORIAL_SIZE; ++i) {
@@ -61,7 +61,7 @@ BigNumber fac[MAX_FACTORIAL_SIZE + 1];
 char temp[5];
 
 void initFactorial() {
-	fac[0].number = strdup("0");
+	fac[0].number = strdup("1");
 	fac[1].number = strdup("1");
     fac[0].digits = fac[1].digits = 1;
     for(int i = 2; i <= MAX_FACTORIAL_SIZE; ++i) {
