@@ -8,7 +8,7 @@ typedef struct {
 int compare(const void *a, const void *b) {
     Item *i1 = (Item*)a;
     Item *i2 = (Item*)b;
-    return (double)i1->value / i1->weight < (double)i2->value / i2->weight;
+    return i1->value * i2->weight < i2->value * i1->weight;
 }
 
 int main() {
