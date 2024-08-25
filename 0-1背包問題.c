@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
@@ -8,13 +7,11 @@ typedef struct {
 } Item;
 
 int main() {
-	Item *items = NULL;
-	int n = 0, w, v;
-	while(scanf("%d %d", &w, &v) && w != 0 && v != 0) {
-	    items = (Item*)realloc(items, (n + 1) * sizeof(Item));
-	    items[n].weight = w;
-	    items[n++].value = v;
-	}
+	int n;
+	scanf("%d", &n);
+	Item items[n];
+	for(int i = 0; i < n; ++i)
+	    scanf("%d %d", &items[i].weight, &items[i].value);
 	int W;
 	scanf("%d", &W);
 	int dp[W + 1];
@@ -22,8 +19,8 @@ int main() {
 	bool selected[n][W + 1];
 	memset(selected, 0, sizeof(selected));
 	for(int i = 0; i < n; ++i) {
-	    w = items[i].weight;
-	    v = items[i].value;
+	    int w = items[i].weight;
+	    int v = items[i].value;
 	    for(int j = W; j >= w; --j) {
 	        if(dp[j] < dp[j - w] + v) {
 	            dp[j] = dp[j - w] + v;
@@ -40,17 +37,16 @@ int main() {
 	        currentW -= items[i].weight;
 	    }
 	}
-	free(items);
 	return 0;
 }
 
 /*
 Input:
+4
 2 3
 3 4
 4 5
 5 6
-0 0
 8
 
 Output:
