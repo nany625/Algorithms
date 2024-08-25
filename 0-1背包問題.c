@@ -9,35 +9,35 @@ typedef struct {
 
 int main() {
 	Item *items = NULL;
-	int size = 0, w, v;
+	int n = 0, w, v;
 	while(scanf("%d %d", &w, &v) && w != 0 && v != 0) {
-	    items = (Item*)realloc(items, (size + 1) * sizeof(Item));
-	    items[size].weight = w;
-	    items[size++].value = v;
+	    items = (Item*)realloc(items, (n + 1) * sizeof(Item));
+	    items[n].weight = w;
+	    items[n++].value = v;
 	}
-	int capacity;
-	scanf("%d", &capacity);
-	int dp[capacity + 1];
+	int W;
+	scanf("%d", &W);
+	int dp[W + 1];
 	memset(dp, 0, sizeof(dp));
-	bool selected[size][capacity + 1];
+	bool selected[n][W + 1];
 	memset(selected, 0, sizeof(selected));
-	for(int i = 0; i < size; ++i) {
+	for(int i = 0; i < n; ++i) {
 	    w = items[i].weight;
 	    v = items[i].value;
-	    for(int j = capacity; j >= w; --j) {
+	    for(int j = W; j >= w; --j) {
 	        if(dp[j] < dp[j - w] + v) {
 	            dp[j] = dp[j - w] + v;
 	            selected[i][j] = true;
 	        }
 	    }
 	}
-	printf("Maximum value in Knapsack: %d\n", dp[capacity]);
+	printf("Maximum value in Knapsack: %d\n", dp[W]);
 	puts("Items selected:");
-	int currentCapacity = capacity;
-	for(int i = size - 1; i >= 0; --i) {
-	    if(selected[i][currentCapacity]) {
+	int currentW = W;
+	for(int i = n - 1; i >= 0; --i) {
+	    if(selected[i][currentW]) {
 	        printf("Item %d: Weight = %d, Value = %d\n", i + 1, items[i].weight, items[i].value);
-	        currentCapacity -= items[i].weight;
+	        currentW -= items[i].weight;
 	    }
 	}
 	free(items);
