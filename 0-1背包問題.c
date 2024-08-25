@@ -45,7 +45,7 @@ int main() {
 }
 
 /*
-input:
+Input:
 2 3
 3 4
 4 5
@@ -53,7 +53,7 @@ input:
 0 0
 8
 
-output:
+Output:
 Maximum value in Knapsack: 10
 Items selected:
 Item 4: Weight = 5, Value = 6
