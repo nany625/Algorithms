@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #define MAX_TARGET 100000
 
 long dp[MAX_TARGET + 1];
 
 int main() {
-    
     int *coins = NULL, n = 0, value;
     while(scanf("%d", &value) && value != 0) {
         coins = (int*)realloc(coins, (n + 1) * sizeof(int));
