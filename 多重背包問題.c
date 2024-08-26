@@ -50,6 +50,15 @@ Maximum value in Bounded Knapsack: 15
 */
 
 /*
+Items are splitted to:
+Item 1: {Weight = 3, Value = 4}, 
+        {Weight = 3, Value = 4}
+Item 2: {Weight = 4, Value = 5}, 
+        {Weight = 8, Value = 10}
+Item 3: {Weight = 2, Value = 3}, 
+        {Weight = 4, Value = 6}, 
+        {Weight = 4, Value = 6}
+        
 dp:
    | 0  1  2  3  4  5  6  7  8  9 10
 ---+--------------------------------
