@@ -28,7 +28,7 @@ int main() {
 	        }
 	    }
 	}
-	printf("Maximum value in Knapsack: %d\n", dp[W]);
+	printf("Maximum value in 0/1 Knapsack: %d\n", dp[W]);
 	puts("Items selected:");
 	int currentW = W;
 	for(int i = n - 1; i >= 0; --i) {
@@ -50,7 +50,7 @@ Input:
 8
 
 Output:
-Maximum value in Knapsack: 10
+Maximum value in 0/1 Knapsack: 10
 Items selected:
 Item 4: Weight = 5, Value = 6
 Item 2: Weight = 3, Value = 4
