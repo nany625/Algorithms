@@ -6,9 +6,7 @@ typedef struct {
 } Activity;
 
 int compare(const void *a, const void *b) {
-    Activity *a1 = (Activity*)a;
-    Activity *a2 = (Activity*)b;
-    return a1->end > a2->end;
+    return ((Activity*)a)->end > ((Activity*)b)->end;
 }
 
 int main() {
