@@ -3,7 +3,7 @@
 
 void MergeSort(int *array, int *reg, int left, int right) {
     if(left < right) {
-        int mid = left + (right - left) / 2;
+        int mid = left + (right - left) >> 1;
         MergeSort(array, reg, left, mid);
         MergeSort(array, reg, mid + 1, right);
         int leftPointer = left, rightPointer = mid + 1;
