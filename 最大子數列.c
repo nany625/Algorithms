@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int maxSubArraySum(int *array, int arraySize) {
     int max = array[0], curr = array[0];
@@ -18,14 +17,9 @@ int main() {
         array[arraySize++] = n;
     }
     fputs("Max subarray sum of [", stdout);
-    bool firstNum = true;
-    for(int i = 0; i < arraySize; ++i) {
-        if(!firstNum)
-            fputs(", ", stdout);
-        printf("%d", array[i]);
-        firstNum = false;
-    }
-    printf("]: %d\n", maxSubArraySum(array, arraySize));
+    for(int i = 0; i < arraySize - 1; ++i)
+        printf("%d, ", array[i]);
+    printf("%d]: %d\n", array[arraySize - 1], maxSubArraySum(array, arraySize));
     free(array);
     return 0;
 }
