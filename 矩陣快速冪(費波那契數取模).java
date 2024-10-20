@@ -14,7 +14,7 @@ public class Main {
                 output.append(n).append('\n');
                 continue;
             }
-            output.append(powerMatrix(new long[][]{{1, 1}, {1, 0}}, n - 1, mod)).append('\n');
+            output.append("F(").append(n).append(") % ").append(mod).append(" = ").append(powerMatrix(new long[][]{{1, 1}, {1, 0}}, n - 1, mod)).append('\n');
         }
         System.out.print(output);
 	}
