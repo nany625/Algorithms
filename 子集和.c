@@ -24,13 +24,9 @@ int main() {
     scanf("%d", &sum);
     printf("%d is %ssubsetsum of [", sum, isSubsetSum(array, arraySize, sum) ? "" : "not ");
     bool firstNum = true;
-    for(int i = 0; i < arraySize; ++i) {
-        if(!firstNum)
-            fputs(", ", stdout);
-        printf("%d", array[i]);
-        firstNum = false;
-    }
-    puts("]");
+    for(int i = 0; i < arraySize - 1; ++i)
+        printf("%d, ", array[i]);
+    printf("%d]\n", array[arraySize - 1]);
     free(array);
     return 0;
 }
