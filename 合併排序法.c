@@ -32,7 +32,7 @@ int main() {
     MergeSort(array, reg, 0, arraySize - 1);
     for(int i = 0; i < arraySize - 1; ++i)
         printf("%d, ", array[i]);
-    printf("%d", array[arraySize - 1]);
+    printf("%d\n", array[arraySize - 1]);
     free(array);
     return 0;
 }
