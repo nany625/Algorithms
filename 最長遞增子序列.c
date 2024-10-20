@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int binarySearch(int *array, int arraySize, int key) {
     int left = 0, right = arraySize - 1;
@@ -33,14 +32,9 @@ int main() {
         array[arraySize++] = n;
     }
     fputs("Length of LIS of [", stdout);
-    bool firstNum = true;
-    for(int i = 0; i < arraySize; ++i) {
-        if(!firstNum)
-            fputs(", ", stdout);
-        printf("%d", array[i]);
-        firstNum = false;
-    }
-    printf("] is %d\n", lengthOfLIS(array, arraySize));
+    for(int i = 0; i < arraySize - 1; ++i)
+        printf("%d, ", array[i]);
+    printf("%d] is %d\n", array[arraySize - 1], lengthOfLIS(array, arraySize));
     free(array);
     return 0;
 }
