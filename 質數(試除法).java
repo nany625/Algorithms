@@ -29,8 +29,10 @@ public class Main {
         primes.add(2);
         primeCount = 1;
         for(int n = 3; n <= MAX_NUM; n += 2) {
-            if(isPrime(n))
+            if(isPrime(n)) {
                 primes.add(n);
+                ++primeCount;
+            }
         }
     }
 }
