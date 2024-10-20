@@ -19,12 +19,9 @@ int main() {
         array[arraySize++] = n;
     }
     InsertionSort(array, arraySize);
-    for(int i = 0; i < arraySize; ++i) {
-        if(i > 0)
-            fputs(", ", stdout);
-        printf("%d", array[i]);
-    }
-    putchar('\n');
+    for(int i = 0; i < arraySize - 1; ++i)
+        printf("%d, ", array[i]);
+    printf("%d\n", array[arraySize - 1]);
     free(array);
     return 0;
 }
