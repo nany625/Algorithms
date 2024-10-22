@@ -9,10 +9,10 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int n = (int)st.nval;
             if(n <= 1) {
-                output.append(n).append('\n');
+                output.append("The Fibonacci number for ").append(n).append(" is ").append(n).append('\n');
                 continue;
             }
-            output.append(powerMatrix(new BigInteger[][]{{BigInteger.ONE, BigInteger.ONE}, {BigInteger.ONE, BigInteger.ZERO}}, n - 1)).append('\n');
+            output.append("The Fibonacci number for ").append(n).append(" is ").append(powerMatrix(new BigInteger[][]{{BigInteger.ONE, BigInteger.ONE}, {BigInteger.ONE, BigInteger.ZERO}}, n - 1)).append('\n');
         }
         System.out.print(output);
 	}
