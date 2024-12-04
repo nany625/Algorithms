@@ -6,7 +6,7 @@ public class Main {
     static boolean[] isComposite = new boolean[MAX_NUM + 1];
 	static ArrayList<Integer> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-	    sieve();
+	    eratosthenesSieve();
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
@@ -16,7 +16,7 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static void sieve() {
+	static void eratosthenesSieve() {
 	    isComposite[0] = isComposite[1] = true;
         int limit = (int)Math.sqrt(MAX_NUM);
         for(int n = 2; n <= MAX_NUM; ++n) {
