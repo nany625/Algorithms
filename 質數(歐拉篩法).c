@@ -6,7 +6,7 @@
 bool isComposite[MAX_NUM + 1] = {true, true};
 int *primes, size;
 
-int main() {
+void eulerSieve() {
     for(int i = 2; i <= MAX_NUM; ++i) {
         if(!isComposite[i]) {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
@@ -18,6 +18,13 @@ int main() {
                 break;
         }
     }
+}
+
+int main() {
+    eulerSieve();
+    int n;
+    while(scanf("%d", &n) && n != 0)
+        printf("%d is %sprime\n", n, !isComposite[n] ? "" : "not ");
     free(primes);
     return 0;
 }
