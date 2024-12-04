@@ -7,8 +7,7 @@
 bool isComposite[MAX_NUM + 1] = {true, true};
 int *primes, primeCount;
 
-void sieve() {
-    primeCount = 0;
+void eratosthenesSieve() {
     int limit = sqrt(MAX_NUM);
     for(int n = 2; n <= MAX_NUM; ++n) {
         if(!isComposite[n]) {
@@ -23,7 +22,7 @@ void sieve() {
 }
 
 int main() {
-    sieve();
+    eratosthenesSieve();
     int n;
     while(scanf("%d", &n) && n != 0)
         printf("%d is %sprime\n", n, !isComposite[n] ? "" : "not ");
