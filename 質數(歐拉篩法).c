@@ -8,7 +8,7 @@ int *primes, size;
 
 void eulerSieve() {
     for(int n = 2; n <= MAX_NUM; ++n) {
-        if(!isComposite[i]) {
+        if(!isComposite[n]) {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
             primes[size++] = n;
         }
