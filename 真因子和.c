@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #define MAX_NUM 1000000
 
-bool isComposite[MAX_NUM + 1] = {true, true};
+bool isComposite[MAX_NUM + 1];
 int *primes, size;
 
 void eulerSieve() {
