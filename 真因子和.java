@@ -6,7 +6,7 @@ public class Main {
     static boolean[] isComposite = new boolean[MAX_NUM + 1];
 	static ArrayList<Integer> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-        sieve();
+        eulerSieve();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
@@ -16,24 +16,21 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static void sieve() {
-	    isComposite[0] = isComposite[1] = true;
-        int limit = (int)Math.sqrt(MAX_NUM);
+	static void eulerSieve() {
         for(int n = 2; n <= MAX_NUM; ++n) {
-            if(!isComposite[n]) {
+            if(!isComposite[n])
                 primes.add(n);
-                ++primeCount;
-                if(n <= limit) {
-                    for(int i = n * n; i <= MAX_NUM; i += n)
-                        isComposite[i] = true;
-                }
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp] = true;
+                if(n % primes.get(i) == 0)
+                    break;
             }
         }
     }
     
     static long trueFactorSum(long n) {
         long sum = 1, limit = (long)Math.sqrt(n), temp = n;
-        for(int i = 0; i < primeCount && primes.get(i) <= limit; ++i) {
+        for(int i = 0; i < primes.size() && primes.get(i) <= limit; ++i) {
             if(n % primes.get(i) == 0) {
                 long tempSum = 1, term = 1;
                 do {
