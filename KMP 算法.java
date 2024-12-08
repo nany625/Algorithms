@@ -14,9 +14,9 @@ public class Main {
     	System.out.print(output);
 	}
 	
-	static void computeLPSArray(String pattern, int len, int[] LPS) {
+	static void computeLPSArray(String pattern, int[] LPS) {
         int i = 1, length = 0;
-        while(i < len) {
+        while(i < pattern.length()) {
             if(pattern.charAt(i) == pattern.charAt(length))
                 LPS[i++] = ++length;
             else {
@@ -29,19 +29,18 @@ public class Main {
     }
     
     static void KMPSearch(String text, String pattern) {
-        int textLen = text.length(), patternLen = pattern.length();
-        int[] LPS = new int[patternLen];
-        computeLPSArray(pattern, patternLen, LPS);
+        int[] LPS = new int[pattern.length()];
+        computeLPSArray(pattern, LPS);
         int i = 0, j = 0;
-        while(i < textLen) {
+        while(i < text.length()) {
             if(pattern.charAt(j) == text.charAt(i)) {
                 ++i;
                 ++j;
             }
-            if(j == patternLen) {
+            if(j == pattern.length()) {
                 output.append("Pattern found at index ").append(i - j).append(".\n");
                 j = LPS[j - 1];
-            } else if(i < textLen && pattern.charAt(j) != text.charAt(i)) {
+            } else if(i < text.length() && pattern.charAt(j) != text.charAt(i)) {
                 if(j != 0)
                     j = LPS[j - 1];
                 else
