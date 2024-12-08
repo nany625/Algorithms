@@ -15,11 +15,10 @@ public class Main {
 	}
 	
 	static int lengthOfLCS(String X, String Y) {
-        int m = X.length(), n = Y.length();
-        int[] LCS = new int[n + 1];
-        for(int i = 0; i < m; ++i) {
+        int[] LCS = new int[Y.length() + 1];
+        for(int i = 0; i < X.length(); ++i) {
             int prev = 0;
-            for(int j = 1; j <= n; ++j) {
+            for(int j = 1; j <= Y.length(); ++j) {
                 int temp = LCS[j];
                 if(X.charAt(i) == Y.charAt(j - 1))
                     LCS[j] = prev + 1;
@@ -28,6 +27,6 @@ public class Main {
                 prev = temp;
             }
         }
-        return LCS[n];
+        return LCS[Y.length()];
     }
 }
