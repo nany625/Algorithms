@@ -11,13 +11,13 @@ public class Main {
             array.add(n);
         st.nextToken();
         int sum = (int)st.nval;
-        System.out.println(sum + " is " + (isSubsetSum(array, array.size(), sum) ? "" : "not ") + "subsetsum of " + array.toString());
+        System.out.println(sum + " is " + (isSubsetSum(array, sum) ? "" : "not ") + "subsetsum of " + array.toString());
 	}
 	
-	static boolean isSubsetSum(ArrayList<Integer> array, int arraySize, int sum) {
+	static boolean isSubsetSum(ArrayList<Integer> array, int sum) {
         boolean[] subsetSum = new boolean[sum + 1];
         subsetSum[0] = true;
-        for(int i = 0; i < arraySize && !subsetSum[sum]; ++i) {
+        for(int i = 0; i < array.size() && !subsetSum[sum]; ++i) {
             for(int j = sum; j >= array.get(i) && !subsetSum[sum]; --j)
                 subsetSum[j] |= subsetSum[j - array.get(i)];
         }
