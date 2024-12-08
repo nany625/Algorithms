@@ -18,7 +18,7 @@ public class Main {
 	    isComposite[0] = isComposite[1] = true;
         int limit = (int)Math.sqrt(MAX_NUM);
         for(int n = 2; n <= MAX_NUM; ++n) {
-            if(!isComposite[n] && n <= limit) {
+            if(n <= limit && !isComposite[n]) {
                 for(int i = n * n; i <= MAX_NUM; i += n)
                     isComposite[i] = true;
             }
