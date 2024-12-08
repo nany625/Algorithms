@@ -19,7 +19,7 @@ int main() {
 	    int w = items[i].weight;
 	    int v = items[i].value;
 	    int a = items[i].amount;
-	    for(int k = 1; k <= a; k *= 2) {
+	    for(int k = 1; k <= a; k <<= 1) {
 	        int itemWeight = w * k;
 	        int itemValue = v * k;
 	        for(int j = W; j >= itemWeight; --j)
