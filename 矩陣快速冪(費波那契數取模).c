@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int temp[2][2];
+long temp[2][2];
 
 void multiplyMatrix(long a[2][2], long b[2][2], int mod) {
     temp[0][0] = (a[0][0] * b[0][0] + a[0][1] * b[1][0]) % mod;
