@@ -11,7 +11,7 @@ public class Main {
             st.nextToken();
             int mod = (int)st.nval;
             if(n <= 1) {
-                output.append("F(").append(n).append(") % ").append(mod).append(" = ").append(n).append('\n');
+                output.append("F(").append(n).append(") % ").append(mod).append(" = ").append(n == 1 && mod != 1 ? 1 : 0).append('\n');
                 continue;
             }
             output.append("F(").append(n).append(") % ").append(mod).append(" = ").append(powerMatrix(new long[][]{{1, 1}, {1, 0}}, n - 1, mod)).append('\n');
