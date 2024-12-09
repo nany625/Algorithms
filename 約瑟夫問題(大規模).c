@@ -21,5 +21,4 @@ int main() {
     while(scanf("%ld %ld", &n, &k) == 2)
         printf("The last person standing is at position %ld\n", josephus(n, k) + 1);
 	return 0;
-	return 0;
 }
