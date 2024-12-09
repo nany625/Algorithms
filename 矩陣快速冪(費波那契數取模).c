@@ -28,7 +28,7 @@ int main() {
     int n, mod;
     while(scanf("%d %d", &n, &mod) == 2) {
         if(n <= 1) {
-            printf("F(%d) %% %d = %d\n", n, mod, n);
+            printf("F(%d) %% %d = %d\n", n, mod, n == 1 && mod != 1);
             continue;
         }
         long matrix[2][2] = {{1, 1}, {1, 0}};
