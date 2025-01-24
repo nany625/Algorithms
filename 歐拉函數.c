@@ -43,7 +43,7 @@ int main() {
     eulerSieve();
     long n;
     while(scanf("%ld", &n) && n != 0)
-        printf("φ(%ld) = %ld\n", n, eulerTotient(n));
+        printf("φ(%ld) = %ld\n", n, eulerTotient(n));    // 小於等於正整數n的所有與n互質的正整數個數
     free(primes);
 	return 0;
 }
