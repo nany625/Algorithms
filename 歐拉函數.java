@@ -12,7 +12,7 @@ public class main {
 		long n;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (long)st.nval) != 0)
-			output.append("φ(").append(n).append(") = ").append(eulerTotient(n)).append('\n');  // 小於等於正整數n的所有與n互質的正整數個數
+			output.append("φ(").append(n).append(") = ").append(eulerTotient(n)).append('\n');    // 小於等於正整數n的所有與n互質的正整數個數
 		System.out.print(output);
 	}
 	
