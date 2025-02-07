@@ -12,7 +12,7 @@ public class Main {
     		int x = (int)st.nval;
     		st.nextToken();
     		int y = (int)st.nval;
-    		output.append(x).append(" is ").append(isConnected(x, y) ? "" : "not ").append("connected to ").append(y).append('\n');
+    		output.append(x).append(" is ").append(isConnected(x, y) ? "connected to " : "not connected to ").append(y).append('\n');
     		unite(x, y);
 		}
 		System.out.print(output);
