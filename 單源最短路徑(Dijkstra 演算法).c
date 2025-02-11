@@ -37,7 +37,7 @@ void printPath(int start, int end) {
 void dijkstra(int start, int n) {
     for(int i = 0; i < n; ++i) {
         dist[i] = INF;
-        visited[i] = 0;
+        visited[i] = false;
     }
     dist[start] = 0;
     for(int i = 0; i < n - 1; ++i) {
