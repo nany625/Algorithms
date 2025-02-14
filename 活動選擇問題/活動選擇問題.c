@@ -14,8 +14,7 @@ int main() {
     int size = 0, start, end;
     while(scanf("%d %d", &start, &end) && (start != 0 || end != 0)) {
         activities = (Activity*)realloc(activities, (size + 1) * sizeof(Activity));
-        activities[size].start = start;
-        activities[size++].end = end;
+        activities[size++] = (Activity){start, end};
     }
     qsort(activities, size, sizeof(Activity), compare);
     int count = 0, last = 0;
