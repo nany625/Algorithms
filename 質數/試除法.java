@@ -12,7 +12,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         int n;
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0)
-            output.append(n).append(" is ").append(isPrime(n) ? "prime\n" : "not prime\n");
+            output.append(n).append(isPrime(n) ? " is prime\n" : " is not prime\n");
         System.out.print(output);
 	}
 	
