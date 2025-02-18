@@ -12,7 +12,7 @@ public class main {
 		long n;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (long)st.nval) != 0)
-			output.append("φ(").append(n).append(") = ").append(n == 1 ? 0 : eulerTotient(n)).append('\n');    // 小於等於正整數n的所有與n互質的正整數個數
+			output.append("φ(").append(n).append(") = ").append(eulerTotient(n)).append('\n');    // 小於等於正整數n的所有與n互質的正整數個數
 		System.out.print(output);
 	}
 	
@@ -30,6 +30,8 @@ public class main {
     }
     
     static long eulerTotient(long n) {
+        if(n == 1)
+            return 0;
         long ans = n, limit = (long)Math.sqrt(n);
         for(int i = 0; i < primes.size() && primes.get(i) <= limit; ++i) {
             if(n % primes.get(i) == 0) {
