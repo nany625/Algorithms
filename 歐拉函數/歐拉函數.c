@@ -24,6 +24,8 @@ void eulerSieve() {
 }
 
 long eulerTotient(long n) {
+    if(n == 1)
+        return 0;
     long ans = n, limit = sqrt(n);
     for(int i = 0; i < size && primes[i] <= limit; ++i) {
         if(n % primes[i] == 0) {
@@ -43,7 +45,7 @@ int main() {
     eulerSieve();
     long n;
     while(scanf("%ld", &n) && n != 0)
-        printf("φ(%ld) = %ld\n", n, n == 1 ? 0 : eulerTotient(n));    // 小於等於正整數n的所有與n互質的正整數個數
+        printf("φ(%ld) = %ld\n", n, eulerTotient(n));    // 小於等於正整數n的所有與n互質的正整數個數
     free(primes);
 	return 0;
 }
