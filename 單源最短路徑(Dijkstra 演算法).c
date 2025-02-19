@@ -44,7 +44,7 @@ void dijkstra(int start, int n) {
         int u = findMinDistance(n);
         if(u == -1)
             break;
-        visited[u] = 1;
+        visited[u] = true;
         for(int j = 0; j < edgeCount[u]; ++j) {
             if(!visited[graph[u][j].next] && dist[u] + graph[u][j].weight < dist[graph[u][j].next]) {
                 dist[graph[u][j].next] = dist[u] + graph[u][j].weight;
