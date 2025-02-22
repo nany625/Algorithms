@@ -78,7 +78,8 @@ int main() {
         /* 若是無向圖，加上
         graph[v] = (Edge*)realloc(graph[v], (edgeCount[v] + 1) * sizeof(Edge));
         graph[v][edgeCount[v]].next = u;
-        graph[v][edgeCount[v]++].weight = w;    */
+        graph[v][edgeCount[v]++].weight = w;
+        */
     }
     int start;
     while(scanf("%d", &start) == 1)
