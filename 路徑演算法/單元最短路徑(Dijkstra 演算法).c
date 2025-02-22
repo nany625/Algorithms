@@ -61,7 +61,7 @@ void dijkstra(int start, int n) {
             printPath(start, i);
         }
     }
-  putchar('\n');
+    putchar('\n');
 }
 
 int main() {
