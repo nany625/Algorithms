@@ -1,3 +1,4 @@
+// #解法一
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -47,5 +48,30 @@ int main() {
     while(scanf("%ld", &n) && n != 0)
         printf("φ(%ld) = %ld\n", n, eulerTotient(n));    // 小於等於正整數n的所有與n互質的正整數個數
     free(primes);
+	return 0;
+}
+
+// #解法二
+#include <stdio.h>
+#define MAX_NUM 1000000
+
+int phi[MAX_NUM + 1];
+
+void eratosthenesSieve() {
+    for(int n = 2; n <= MAX_NUM; ++n) {
+        if(phi[n] == n) {
+            for(int i = n; i <= MAX_NUM; i += n)
+                phi[i] -= phi[i] / n;
+        }
+    }
+}
+
+int main() {
+    for(int n = 2; n <= MAX_NUM; ++n)
+        phi[n] = n;
+    eratosthenesSieve();
+    int n;
+    while(scanf("%d", &n) && n != 0)
+        printf("φ(%d) = %ld\n", n, phi[n]);    // 小於等於正整數n的所有與n互質的正整數個數
 	return 0;
 }
