@@ -1,3 +1,202 @@
+// #解法一
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+#define MAXV 1000       // 最大節點數
+#define INF INT_MAX     // 無窮大表示無法到達
+
+// 鄰接表的結構定義
+typedef struct Edge {
+    int to;             // 鄰接節點
+    int weight;         // 邊權重
+    struct Edge *next;  // 下一條邊
+} Edge;
+
+typedef struct {
+    Edge *head;         // 指向鄰接邊的鏈表頭
+} Graph[MAXV];
+
+// 最小堆的結構定義
+typedef struct {
+    int vertex;         // 節點編號
+    int dist;           // 最短距離
+} MinHeapNode;
+
+typedef struct {
+    MinHeapNode *nodes; // 堆中的節點
+    int size;           // 堆大小
+    int capacity;       // 堆容量
+    int *pos;           // 記錄節點在堆中的位置
+} MinHeap;
+
+// 創建一個圖的鄰接表
+void initGraph(Graph graph, int n) {
+    for (int i = 0; i < n; i++) {
+        graph[i].head = NULL;
+    }
+}
+
+// 添加邊（鄰接表）
+void addEdge(Graph graph, int u, int v, int weight) {
+    Edge *newEdge = (Edge *)malloc(sizeof(Edge));
+    newEdge->to = v;
+    newEdge->weight = weight;
+    newEdge->next = graph[u].head;
+    graph[u].head = newEdge;
+}
+
+// 創建一個最小堆
+MinHeap *createMinHeap(int capacity) {
+    MinHeap *heap = (MinHeap *)malloc(sizeof(MinHeap));
+    heap->nodes = (MinHeapNode *)malloc(capacity * sizeof(MinHeapNode));
+    heap->size = 0;
+    heap->capacity = capacity;
+    heap->pos = (int *)malloc(capacity * sizeof(int));
+    return heap;
+}
+
+// 最小堆的交換操作
+void swapMinHeapNode(MinHeapNode *a, MinHeapNode *b) {
+    MinHeapNode temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// 堆化操作
+void minHeapify(MinHeap *heap, int idx) {
+    int smallest = idx;
+    int left = 2 * idx + 1;
+    int right = 2 * idx + 2;
+
+    if (left < heap->size && heap->nodes[left].dist < heap->nodes[smallest].dist)
+        smallest = left;
+    if (right < heap->size && heap->nodes[right].dist < heap->nodes[smallest].dist)
+        smallest = right;
+
+    if (smallest != idx) {
+        MinHeapNode smallestNode = heap->nodes[smallest];
+        MinHeapNode idxNode = heap->nodes[idx];
+
+        heap->pos[smallestNode.vertex] = idx;
+        heap->pos[idxNode.vertex] = smallest;
+
+        swapMinHeapNode(&heap->nodes[smallest], &heap->nodes[idx]);
+
+        minHeapify(heap, smallest);
+    }
+}
+
+// 提取最小距離的節點
+MinHeapNode extractMin(MinHeap *heap) {
+    if (heap->size == 0) {
+        MinHeapNode nullNode = {-1, -1};
+        return nullNode;
+    }
+
+    MinHeapNode root = heap->nodes[0];
+    MinHeapNode lastNode = heap->nodes[heap->size - 1];
+    heap->nodes[0] = lastNode;
+
+    heap->pos[root.vertex] = heap->size - 1;
+    heap->pos[lastNode.vertex] = 0;
+
+    heap->size--;
+    minHeapify(heap, 0);
+
+    return root;
+}
+
+// 更新最小堆中的距離
+void decreaseKey(MinHeap *heap, int vertex, int dist) {
+    int i = heap->pos[vertex];
+    heap->nodes[i].dist = dist;
+
+    while (i && heap->nodes[i].dist < heap->nodes[(i - 1) / 2].dist) {
+        heap->pos[heap->nodes[i].vertex] = (i - 1) / 2;
+        heap->pos[heap->nodes[(i - 1) / 2].vertex] = i;
+        swapMinHeapNode(&heap->nodes[i], &heap->nodes[(i - 1) / 2]);
+
+        i = (i - 1) / 2;
+    }
+}
+
+// 判斷節點是否在堆中
+int isInMinHeap(MinHeap *heap, int vertex) {
+    return heap->pos[vertex] < heap->size;
+}
+
+// Dijkstra 演算法
+void dijkstra(Graph graph, int start, int n) {
+    int dist[MAXV];
+    MinHeap *heap = createMinHeap(n);
+
+    for (int i = 0; i < n; i++) {
+        dist[i] = INF;
+        heap->nodes[i].vertex = i;
+        heap->nodes[i].dist = INF;
+        heap->pos[i] = i;
+    }
+
+    dist[start] = 0;
+    heap->nodes[start].dist = 0;
+    heap->pos[start] = 0;
+    heap->size = n;
+
+    while (heap->size > 0) {
+        MinHeapNode minNode = extractMin(heap);
+        int u = minNode.vertex;
+
+        Edge *edge = graph[u].head;
+        while (edge != NULL) {
+            int v = edge->to;
+
+            if (isInMinHeap(heap, v) && dist[u] != INF &&
+                dist[u] + edge->weight < dist[v]) {
+                dist[v] = dist[u] + edge->weight;
+                decreaseKey(heap, v, dist[v]);
+            }
+            edge = edge->next;
+        }
+    }
+
+    printf("節點 %d 到其他節點的最短距離：\n", start);
+    for (int i = 0; i < n; i++) {
+        if (dist[i] == INF)
+            printf("到節點 %d：無法到達\n", i);
+        else
+            printf("到節點 %d：%d\n", i, dist[i]);
+    }
+
+    free(heap->nodes);
+    free(heap->pos);
+    free(heap);
+}
+
+int main() {
+    int n, m;
+    Graph graph;
+    printf("輸入節點數和邊數：");
+    scanf("%d %d", &n, &m);
+
+    initGraph(graph, n);
+    printf("輸入每條邊（格式：起點 終點 權重）：\n");
+    for (int i = 0; i < m; i++) {
+        int u, v, w;
+        scanf("%d %d %d", &u, &v, &w);
+        addEdge(graph, u, v, w);
+    }
+
+    int start;
+    printf("輸入起點：");
+    scanf("%d", &start);
+
+    dijkstra(graph, start, n);
+
+    return 0;
+}
+
+// #解法二
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
