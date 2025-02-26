@@ -4,20 +4,20 @@
 
 int lengthOfLCS(char *X, char *Y) {
     int m = strlen(X), n = strlen(Y);
-    int LCS[n + 1];
-    memset(LCS, 0, sizeof(LCS));
+    int dp[n + 1];
+    memset(dp, 0, sizeof(dp));
     for(int i = 0; i < m; ++i) {
         int prev = 0;
         for(int j = 1; j <= n; ++j) {
-            int temp = LCS[j];
+            int temp = dp[j];
             if(X[i] == Y[j - 1])
-                LCS[j] = prev + 1;
+                dp[j] = prev + 1;
             else
-                LCS[j] = LCS[j] > LCS[j - 1] ? LCS[j] : LCS[j - 1];
+                dp[j] = dp[j] > dp[j - 1] ? dp[j] : dp[j - 1];
             prev = temp;
         }
     }
-    return LCS[n];
+    return dp[n];
 }
 
 int main() {
