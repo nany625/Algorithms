@@ -20,7 +20,7 @@ int levenshteinDistance(char *X, char *Y) {
             if(X[i - 1] == Y[j - 1])
                 dp[j] = prev;
             else
-                dp[j] = 1 + min(temp, dp[j - 1], prev);
+                dp[j] = 1 + min(dp[j], dp[j - 1], prev);
             prev = temp;
         }
     }
