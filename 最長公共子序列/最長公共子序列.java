@@ -15,18 +15,18 @@ public class Main {
 	}
 	
 	static int lengthOfLCS(String X, String Y) {
-        int[] LCS = new int[Y.length() + 1];
+        int[] dp = new int[Y.length() + 1];
         for(int i = 0; i < X.length(); ++i) {
             int prev = 0;
             for(int j = 1; j <= Y.length(); ++j) {
-                int temp = LCS[j];
+                int temp = dp[j];
                 if(X.charAt(i) == Y.charAt(j - 1))
-                    LCS[j] = prev + 1;
+                    dp[j] = prev + 1;
                 else
-                    LCS[j] = Math.max(LCS[j], LCS[j - 1]);
+                    dp[j] = Math.max(dp[j], dp[j - 1]);
                 prev = temp;
             }
         }
-        return LCS[Y.length()];
+        return dp[Y.length()];
     }
 }
