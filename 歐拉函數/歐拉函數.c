@@ -72,6 +72,6 @@ int main() {
     eratosthenesSieve();
     int n;
     while(scanf("%d", &n) && n != 0)
-        printf("φ(%d) = %ld\n", n, phi[n]);    // 小於等於正整數n的所有與n互質的正整數個數
+        printf("φ(%d) = %d\n", n, phi[n]);    // 小於等於正整數n的所有與n互質的正整數個數
 	return 0;
 }
