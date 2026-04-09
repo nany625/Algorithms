@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAX_NUM = 1000000;
-    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static int[] mark = new int[(MAX_NUM >> 6) + 1];
 	static ArrayList<Integer> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
         eulerSieve();
@@ -15,13 +15,22 @@ public class Main {
             output.append("Sum of true factors of ").append(n).append(": ").append(trueFactorSum(n)).append('\n');
         System.out.print(output);
 	}
+
+    static boolean GET(int n) {
+	    return (mark[n >> 5] & (1 << (n & 31))) != 0;
+	}
 	
+	static void SET(int n) {
+	    mark[n >> 5] |= 1 << (n & 31);
+	}
+    
 	static void eulerSieve() {
-        for(int n = 2; n <= MAX_NUM; ++n) {
-            if(!isComposite[n])
+        primes.add(2);
+        for(int n = 3; n <= MAX_NUM; n += 2) {
+            if(!GET(n >> 1))
                 primes.add(n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
-                isComposite[temp] = true;
+            for(int i = 1, temp; (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                SET(temp >> 1);
                 if(n % primes.get(i) == 0)
                     break;
             }
