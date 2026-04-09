@@ -5,7 +5,6 @@
 #define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
 unsigned int mark[(MAX_NUM >> 5) + 1];
-bool isComposite[MAX_NUM + 1] = {true, true};
 
 void eratosthenesSieve() {
     SET(0);
