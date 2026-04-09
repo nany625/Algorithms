@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <stdbool.h>
 #define MAX_NUM 1000000
 #define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
 #define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
