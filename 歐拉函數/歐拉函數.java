@@ -66,7 +66,7 @@ public class main {
 	public static void main(String[] args) throws IOException {
 	    for(int n = 2; n <= MAX_NUM; ++n)
             phi[n] = n;
-	    eratosthenesSieve();
+	    computePhi();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		int n;
@@ -76,7 +76,7 @@ public class main {
 		System.out.print(output);
 	}
     
-    static void eratosthenesSieve() {
+    static void computePhi() {
         for(int n = 2; n <= MAX_NUM; ++n) {
             if(phi[n] == n) {
                 for(int i = n; i <= MAX_NUM; i += n)
