@@ -58,7 +58,7 @@ int main() {
 
 int phi[MAX_NUM + 1];
 
-void eratosthenesSieve() {
+void computePhi() {
     for(int n = 2; n <= MAX_NUM; ++n) {
         if(phi[n] == n) {
             for(int i = n; i <= MAX_NUM; i += n)
@@ -70,7 +70,7 @@ void eratosthenesSieve() {
 int main() {
     for(int n = 2; n <= MAX_NUM; ++n)
         phi[n] = n;
-    eratosthenesSieve();
+    computePhi();
     int n;
     while(scanf("%d", &n) && n != 0)
         printf("φ(%d) = %d\n", n, phi[n]);    // 小於等於正整數n的所有與n互質的正整數個數
