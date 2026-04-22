@@ -9,7 +9,7 @@ int main() {
     int n;
     while(cin >> n)
         sequence.push_back(n);
-    vector<int> tail, tailIdx, pre(sequence.size(), -1);
+    vector<int> tail, tailIdx, next(sequence.size(), -1);
     for(int i = sequence.size() - 1; i >= 0; --i) {
         int pos = lower_bound(tail.begin(), tail.end(), sequence[i], greater<int>()) - tail.begin();
         if(pos == tail.size()) {
@@ -20,13 +20,13 @@ int main() {
             tailIdx[pos] = i;
         }
         if(pos > 0)
-            pre[i] = tailIdx[pos - 1];
+            next[i] = tailIdx[pos - 1];
     }
     vector<int> LIS;
     int first = tailIdx.back();
     do {
         LIS.push_back(sequence[first]);
-        first = pre[first];
+        first = next[first];
     } while(first != -1);
     cout << "Length of LIS of [";
     for(int i = 0; i < sequence.size() - 1; ++i)
