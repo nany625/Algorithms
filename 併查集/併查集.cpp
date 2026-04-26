@@ -41,3 +41,29 @@ int main() {
     }
     return 0;
 }
+
+/*
+Input:
+5 6
+2 1
+7 6
+3 8
+4 8
+4 7
+4 6
+8 8
+6 5
+8 7
+
+Output:
+5 is not connected to 6
+2 is not connected to 1
+7 is not connected to 6
+3 is not connected to 8
+4 is not connected to 8
+4 is not connected to 7
+4 is connected to 6
+8 is connected to 8
+6 is connected to 5
+8 is connected to 7
+*/
