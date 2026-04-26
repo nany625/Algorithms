@@ -60,3 +60,23 @@ int main() {
     kruskal(V, E);
     return 0;
 }
+
+/*
+Input:
+5 7
+0 1 2
+0 3 6
+1 3 8
+1 2 3
+1 4 5
+2 4 7
+3 4 9
+
+Output:
+Edges in the Minimum Spanning Tree:
+Edge (0, 1) with weight 2
+Edge (1, 2) with weight 3
+Edge (1, 4) with weight 5
+Edge (0, 3) with weight 6
+Total weight of MST: 16
+*/
