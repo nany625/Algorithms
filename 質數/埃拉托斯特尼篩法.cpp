@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAX_NUM = 1000000;
+const int MAX_NUM = 10000000;
 bitset<MAX_NUM + 1> mark;
 
 void eratosthenesSieve() {
