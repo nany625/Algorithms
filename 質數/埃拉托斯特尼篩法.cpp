@@ -21,6 +21,6 @@ int main() {
     eratosthenesSieve();
     int n;
     while(cin >> n)
-        cout << n << (!mark[n] ? " is prime\n" : " is not prime\n"); 
+        cout << n << (!mark[n] ? " is prime\n" : " is not prime\n");
     return 0;
 }
