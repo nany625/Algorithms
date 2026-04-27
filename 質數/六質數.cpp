@@ -19,6 +19,6 @@ int main() {
     cin.tie(0);
     int n;
     while(cin >> n)
-        cout << n << (sexyPrime(n) ? " is prime\n" : " is not prime\n"); 
+        cout << n << (sexyPrime(n) ? " is prime\n" : " is not prime\n");
     return 0;
 }
