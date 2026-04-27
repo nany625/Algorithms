@@ -25,6 +25,6 @@ int main() {
     eulerSieve();
     int n;
     while(cin >> n)
-        cout << n << (n == 2 || (n & 1 && !mark[n >> 1]) ? " is prime\n" : " is not prime\n"); 
+        cout << n << (n == 2 || (n & 1 && !mark[n >> 1]) ? " is prime\n" : " is not prime\n");
     return 0;
 }
