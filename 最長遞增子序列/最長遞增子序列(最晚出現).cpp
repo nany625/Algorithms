@@ -39,3 +39,12 @@ int main() {
     cout << LIS.back() << "]\n";
     return 0;
 }
+
+/*
+Input:
+-7 10 9 2 3 8 8 6
+
+Output:
+Length of LIS of [-7, 10, 9, 2, 3, 8, 8, 6] is 4
+The last occurrence LIS is [-7, 2, 3, 6]
+*/
