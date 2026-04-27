@@ -27,7 +27,7 @@ void eulerSieve() {
 int main() {
     eulerSieve();
     int n;
-    while(scanf("%d", &n) && n != 0)
+    while(scanf("%d", &n) == 1)
         printf("%d is %sprime\n", n, n == 2 || (n & 1 && !GET(n >> 1)) ? "" : "not ");
     free(primes);
     return 0;
