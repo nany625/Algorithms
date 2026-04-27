@@ -10,8 +10,8 @@ void eratosthenesSieve() {
     SET(0);
     SET(1);
     int limit = sqrt(MAX_NUM);
-    for(int n = 2; n <= MAX_NUM; ++n) {
-        if(n <= limit && !GET(n)) {
+    for(int n = 2; n <= limit; ++n) {
+        if(!GET(n)) {
             for(int i = n * n; i <= MAX_NUM; i += n)
                 SET(i);
         }
@@ -21,7 +21,7 @@ void eratosthenesSieve() {
 int main() {
     eratosthenesSieve();
     int n;
-    while(scanf("%d", &n) && n != 0)
+    while(scanf("%d", &n) == 1)
         printf("%d is %sprime\n", n, !GET(n) ? "" : "not ");
     return 0;
 }
