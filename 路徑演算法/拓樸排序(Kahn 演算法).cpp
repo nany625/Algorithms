@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAXN = 10000;
-vector<vector<pair<int, int>>> adj(MAXN);
-vector<int> indeg(MAXN);
+const int MAXV = 10000;
+vector<vector<pair<int, int>>> adj(MAXV);
+vector<int> indeg(MAXV);
 
 vector<int> topo_sort(int V) {
     queue<int> q;
@@ -21,7 +21,7 @@ vector<int> topo_sort(int V) {
         }
         topo.push_back(u);
     }
-    if(topo.size() != n)
+    if(topo.size() != V)
         return {};
     return topo;
 }
