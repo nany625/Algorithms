@@ -79,3 +79,36 @@ int main() {
     }
     return 0;
 }
+
+/*
+Input:
+9 15
+0 1 4
+0 7 8
+1 2 8
+1 7 11
+2 3 7
+2 5 4
+2 8 2
+3 4 9
+3 5 14
+4 7 7
+5 4 10
+6 5 2
+6 8 6
+7 6 1
+7 8 7
+5
+0 4
+1 6
+2 0
+3 6
+5 8
+
+Output:
+Shortest path from 0 to 4: 0 -> 7 -> 6 -> 5 -> 4, distance is 21
+Shortest path from 1 to 6: 1 -> 7 -> 6, distance is 12
+2 can't reach 0
+Shortest path from 3 to 6: 3 -> 4 -> 7 -> 6, distance is 17
+Shortest path from 5 to 8: 5 -> 4 -> 7 -> 8, distance is 24
+*/
