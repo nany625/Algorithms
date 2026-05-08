@@ -9,9 +9,9 @@ void dijkstra(int V, int S, int T) {
     // 優先佇列，儲存已訪問之節點與最短距離，以距離由小到大排列
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     // 初始化距離為無窮大
-    fill(dist.begin(), dist.end(), INT_MAX);
+    fill(dist.begin(), dist.begin() + V, INT_MAX);
     // 初始化前驅節點為自己
-    iota(pre.begin(), pre.end(), 0);
+    iota(pre.begin(), pre.begin() + V, 0);
     // 與自己(起點)距離為0
     dist[S] = 0;
     // 將自己加入優先佇列
@@ -79,36 +79,3 @@ int main() {
     }
     return 0;
 }
-
-/*
-Input:
-9 15
-0 1 4
-0 7 8
-1 2 8
-1 7 11
-2 3 7
-2 5 4
-2 8 2
-3 4 9
-3 5 14
-4 7 7
-5 4 10
-6 5 2
-6 8 6
-7 6 1
-7 8 7
-5
-0 4
-1 6
-2 0
-3 6
-5 8
-
-Output:
-Shortest path from 0 to 4: 0 -> 7 -> 6 -> 5 -> 4, distance is 21
-Shortest path from 1 to 6: 1 -> 7 -> 6, distance is 12
-2 can't reach 0
-Shortest path from 3 to 6: 3 -> 4 -> 7 -> 6, distance is 17
-Shortest path from 5 to 8: 5 -> 4 -> 7 -> 8, distance is 24
-*/
